@@ -1,0 +1,4 @@
+# 指定当前生效环境
+spring:
+  profiles:
+    active: dev
