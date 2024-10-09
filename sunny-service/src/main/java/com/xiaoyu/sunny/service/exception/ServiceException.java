@@ -13,7 +13,7 @@ public class ServiceException extends BaseException{
         super(message);
     }
 
-    public ServiceException(String code, String message) {
+    public ServiceException(Integer code, String message) {
         super(code, message);
     }
 }

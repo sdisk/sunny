@@ -9,5 +9,11 @@ import com.xiaoyu.sunny.service.user.dto.UserDTO;
  */
 public interface UserService {
 
-    UserDTO findById(Integer id);
+    UserDTO findById(Long id);
+
+    boolean addUser(UserDTO userDTO);
+
+    boolean editUser(UserDTO userDTO);
+
+    boolean deleteUser(Long id);
 }

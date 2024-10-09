@@ -2,3 +2,33 @@
 spring:
   profiles:
     active: dev
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+
+mybatis:
+  #mapper-locations: classpath*:**/*.Mapper.xml
+  type-alias-package: com.xiaoyu.sunny.dao.*.entity
+  configuration:
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+mapper:
+  mappers:
+    - com.xiaoyu.sunny.dao.base.Mapper
+  not-empty: false
+  identity: MYSQL
+
+pagehelper:
+  dialect: com.github.pagehelper.dialect.helper.MySqlDialect
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+logging:
+  level:
+    root: info

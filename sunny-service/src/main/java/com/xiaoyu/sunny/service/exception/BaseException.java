@@ -12,7 +12,7 @@ public class BaseException extends RuntimeException {
     /**
      * 错误编码
      */
-     protected String code;
+     protected int code;
 
      public BaseException() {}
 
@@ -20,16 +20,16 @@ public class BaseException extends RuntimeException {
         super(message);
      }
 
-     public BaseException(String code, String message) {
+     public BaseException(int code, String message) {
          super(message);
          this.code = code;
      }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 }
