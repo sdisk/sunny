@@ -4,3 +4,15 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/coupon?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: root
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password:
+    timeout: 6000
+    lettuce:
+      pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1

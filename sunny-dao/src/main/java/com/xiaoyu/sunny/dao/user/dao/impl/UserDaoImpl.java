@@ -30,9 +30,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean updateUser(UserPO userPO) {
-        int number = userMapper.updateByPrimaryKey(userPO);
-        return number == 1;
+    public int updateUser(UserPO userPO) {
+        return userMapper.updateByPrimaryKeySelective(userPO);
     }
 
     @Override

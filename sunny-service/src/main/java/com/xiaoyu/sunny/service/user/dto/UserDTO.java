@@ -12,6 +12,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class UserDTO {
     private Long id;
     private String username;
@@ -19,4 +20,5 @@ public class UserDTO {
     private String salt;
     private String email;
     private String phone;
+    private Integer version;
 }

@@ -14,7 +14,7 @@ public interface UserDao {
 
     boolean addUser(UserPO userPO);
 
-    boolean updateUser(UserPO userPO);
+    int updateUser(UserPO userPO);
 
     boolean deleteUser(Long id);
 

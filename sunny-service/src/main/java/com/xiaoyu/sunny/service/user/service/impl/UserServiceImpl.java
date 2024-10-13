@@ -2,6 +2,7 @@ package com.xiaoyu.sunny.service.user.service.impl;
 
 import com.xiaoyu.sunny.dao.user.dao.UserDao;
 import com.xiaoyu.sunny.dao.user.entity.UserPO;
+import com.xiaoyu.sunny.service.exception.ServiceException;
 import com.xiaoyu.sunny.service.user.dto.UserDTO;
 import com.xiaoyu.sunny.service.user.service.UserService;
 import com.xiaoyu.sunny.service.util.Md5Util;
@@ -34,6 +35,7 @@ public class UserServiceImpl implements UserService {
                 .id(userPO.getId())
                 .username(userPO.getUsername())
                 .phone(userPO.getPhone())
+                .email(userPO.getEmail())
                 .build();
     }
 
@@ -49,6 +51,7 @@ public class UserServiceImpl implements UserService {
         LocalDateTime now = LocalDateTime.now();
         userPO.setCreateTime(now);
         userPO.setUpdateTime(now);
+        userPO.setVersion(0);
         return userDao.addUser(userPO);
     }
 
@@ -57,9 +60,19 @@ public class UserServiceImpl implements UserService {
         log.info("[UserServiceImpl.editUser] userDTO:{}", userDTO);
         Assert.notNull(userDTO, "用户对象不能为空");
         UserPO userPO = userDao.getById(userDTO.getId());
-        userPO.setUsername(userDTO.getUsername());
-        userPO.setPhone(userDTO.getPhone());
-        return userDao.updateUser(userPO);
+        Assert.notNull(userPO, "用户ID不存在");
+        UserPO newUserPO = new UserPO();
+        BeanUtils.copyProperties(userDTO, newUserPO);
+        newUserPO.setVersion(userPO.getVersion());
+        int number = userDao.updateUser(newUserPO);
+        checkCountAndVersion(number, newUserPO);
+        return true;
+    }
+
+    private void checkCountAndVersion(int number, UserPO userPO) {
+        if (number == 0 && userPO.getVersion() !=null) {
+            throw new ServiceException("乐观锁检查失败");
+        }
     }
 
     @Override

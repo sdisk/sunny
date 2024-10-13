@@ -5,8 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.*;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
+import tk.mybatis.mapper.annotation.Version;
 
 /**
  * @Description: 用户po类
@@ -26,6 +29,8 @@ public class UserPO {
     private String salt;
     private String email;
     private String phone;
+    @Version
+    private Integer version;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 }
