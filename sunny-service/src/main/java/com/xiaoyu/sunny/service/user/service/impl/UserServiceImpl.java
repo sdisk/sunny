@@ -7,6 +7,8 @@ import com.xiaoyu.sunny.service.user.dto.UserDTO;
 import com.xiaoyu.sunny.service.user.service.UserService;
 import com.xiaoyu.sunny.service.util.Md5Util;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
@@ -26,7 +28,9 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserDao userDao;
 
+
     @Override
+    @Cacheable(value = "userCache", key= "#id")
     public UserDTO findById(Long id) {
         log.info("[UserServiceImpl.findById] id:{}", id);
         Assert.notNull(id, "用户ID不能为空");
@@ -56,6 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @CacheEvict(value = "userCache", key= "#userDTO.getId()")
     public boolean editUser(UserDTO userDTO) {
         log.info("[UserServiceImpl.editUser] userDTO:{}", userDTO);
         Assert.notNull(userDTO, "用户对象不能为空");
@@ -76,6 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @CacheEvict(value = "userCache", key= "#id")
     public boolean deleteUser(Long id) {
         log.info("[UserServiceImpl.deleteUser] userId:{}", id);
         Assert.notNull(id, "用户ID不能为空");

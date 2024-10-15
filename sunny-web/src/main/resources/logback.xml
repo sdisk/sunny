@@ -18,7 +18,7 @@
     <!-- 日志记录级别 -->
     <property name="logback_level" value="${logback.level:-DEBUG}"/>
     <!-- 是否输出日志到文件 -->
-    <property name="logback_rolling" value="${logback.rolling:-false}"/>
+    <property name="logback_rolling" value="${logback.rolling:-true}"/>
     <!-- 设置日志输出目录 -->
     <property name="logback_rolling_path" value="${logback.rolling.path:-/data/logs}"/>
     <!-- 日志文件最大大小 -->
