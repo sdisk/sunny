@@ -3,6 +3,7 @@ package com.xiaoyu.sunny.dao.user.dao.impl;
 import com.xiaoyu.sunny.dao.user.dao.UserDao;
 import com.xiaoyu.sunny.dao.user.entity.UserPO;
 import com.xiaoyu.sunny.dao.user.mapper.UserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -12,6 +13,7 @@ import javax.annotation.Resource;
  * @Author XiaoYu
  * @Date 2024/9/7 17:53
  */
+@Slf4j
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -20,6 +22,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public UserPO getById(Long id) {
+        log.info("[UserDaoImpl.getById] from db, id:{}");
         return userMapper.selectByPrimaryKey(id);
     }
 

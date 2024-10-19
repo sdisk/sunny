@@ -7,7 +7,6 @@ import com.xiaoyu.sunny.web.util.ResultsUtil;
 import com.xiaoyu.sunny.service.util.RocketMqHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
