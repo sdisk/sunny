@@ -1,5 +1,7 @@
 package com.xiaoyu.sunny.service.user.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 /**
@@ -13,8 +15,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@ApiModel
 public class UserDTO {
+    @ApiModelProperty("id")
     private Long id;
+    @ApiModelProperty("username")
     private String username;
     private String password;
     private String salt;
