@@ -28,6 +28,7 @@ public class CouponInfoPO {
     private Date receiveTime;
     private Date validateTime;
     private Date usedTime;
+    private Integer couponStatus;
     private String createUser;
     private String updateUser;
     private Date createTime;

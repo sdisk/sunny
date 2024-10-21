@@ -1,4 +1,4 @@
-package com.xiaoyu.sunny.web.message;
+package com.xiaoyu.sunny.web.message.consumer;
 
 import com.xiaoyu.sunny.service.user.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;

@@ -23,5 +23,6 @@ public class CouponRulePO {
     private Long id;
     private String name;
     private Integer type;
+    //json对象，多个字段
     private String ruleContent;
 }

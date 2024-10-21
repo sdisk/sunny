@@ -18,4 +18,19 @@ public interface CouponService {
      * @param issuanceCouponDTO
      */
     void issuanceCoupon(IssuanceCouponDTO issuanceCouponDTO);
+
+
+    /**
+     * 领券
+     * batchId: 优惠券批次id
+     * stepNumber: 固定步长
+     */
+    void receiveCoupon(Long batchId, int stepNumber);
+
+    /**
+     * 用券
+     * couponId: 优惠券id
+     * orderId: 订单id
+     */
+    void useCoupon(Long couponId, Long orderId);
 }
